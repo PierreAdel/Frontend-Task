@@ -6,13 +6,15 @@ import Auxiliary from '../../../hoc/Auxiliary'
 import classes from './EmployeeList.module.css'
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
 import Spinner from '../../../Components/UI/Spinner/Spinner'
-
+import Modal from '../../UI/Modal/Modal'
+import AddEmp from '../../AddEmp/AddEmp'
 class EmployeeList extends Component  {
   state ={
     data: null,
     loading: false,
     error: false,
-    page:1
+    page:1,
+    creating: false
   }
     componentDidMount() {
         axios.get('/employees?page=1')
@@ -47,6 +49,12 @@ class EmployeeList extends Component  {
      
     }
 
+    addEmpHandler=() => {
+          this.setState({creating:true})
+    }
+    cancelEmpHandler=() => {
+      this.setState({creating:false})
+}
 
   render() {
     let emp = null
@@ -78,7 +86,10 @@ class EmployeeList extends Component  {
     return ( 
     <div className={classes.EmployessList}>
     {emp}
-    
+    <div onClick={this.addEmpHandler} className={classes.AddSticky}>Add A New Employee</div>
+    <Modal show={this.state.creating} modalClosed={this.cancelEmpHandler} >
+        <AddEmp/>
+    </Modal>
     </div>
     )
   }

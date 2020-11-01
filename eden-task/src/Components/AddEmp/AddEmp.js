@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
  
-import classes from './EmpCard.module.css'
+import classes from './AddEmp.module.css'
 import Auxiliary from '../../hoc/Auxiliary'
 import avatar from '../../assests/images/avatar.png'
 import Input from '../UI/Input/Input'
 
 import axios from '../../axios'
-class empCard extends Component{
+class AddEmp extends Component{
     state={
          
 
@@ -20,7 +20,7 @@ class empCard extends Component{
                     placeholder: 'name',
                 
                 },
-                value:this.props.emp["name"],
+                value:"",
                 validation: {
                     required:true 
                 },
@@ -37,7 +37,7 @@ class empCard extends Component{
                     type: 'text',
                     placeholder: 'age'
                 },
-                value:this.props.emp["age"],
+                value:"",
                 validation: {
                     required:true,
                     
@@ -56,7 +56,7 @@ class empCard extends Component{
                     type: 'text',
                     placeholder: 'title'
                 },
-                value:this.props.emp["title"],
+                value:"",
                 validation: {
                     required:true,
                     
@@ -75,7 +75,7 @@ class empCard extends Component{
                     type: 'text',
                     placeholder: 'id'
                 },
-                value:this.props.emp["id"],
+                value:"",
                 validation: {
                     required:true,
                     
@@ -242,4 +242,4 @@ class empCard extends Component{
  
  
 
-export default empCard 
+export default AddEmp 
