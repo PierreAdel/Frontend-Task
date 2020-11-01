@@ -1,8 +1,12 @@
 const express = require('express')
 const { json } = require('express')
 const _ = require('lodash')
+var cors = require('cors')
+ 
+ 
 
 const app = express()
+app.use(cors())
 app.use(json())
 
 const employees = [

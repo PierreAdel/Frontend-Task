@@ -1,0 +1,35 @@
+.Home {
+  
+  
+     width: auto;
+        
+    display: flex;
+    flex-direction: column;
+    
+ }
+
+ 
+ .Home h1{
+   padding: 0px;
+   margin: 0px;
+    text-align: center;
+     
+    padding: 50px 0px 30px 0px ;
+    font-family: 'Lora', serif;
+    color: black;
+    background-color: white;
+     
+     
+}
+
+ 
+
+  
+
+@media (max-width: 800px) {
+   .Home {
+     width: 100%;
+     height: auto;
+     overflow: hidden;
+   }
+}
