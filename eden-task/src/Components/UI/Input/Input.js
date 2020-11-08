@@ -17,6 +17,23 @@ const input =(props) => {
     {
         inputClasses.push(classes.Disabled)
     }
+    if(props.style === "Name")
+    {
+        inputClasses.push(classes.Bold)
+    }
+    else if(props.style === "Age")
+    {
+        inputClasses.push(classes.Age)
+    }
+    else if(props.style === "Title")
+    {
+        inputClasses.push(classes.Title)
+    }
+    else if(props.style === "ID")
+    {
+        inputClasses.push(classes.ID)
+    }
+    
     switch(props.elementType)
     {
         case ('input'):

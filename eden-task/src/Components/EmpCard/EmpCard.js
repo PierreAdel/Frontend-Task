@@ -4,8 +4,9 @@ import classes from './EmpCard.module.css'
 import Auxiliary from '../../hoc/Auxiliary'
 import avatar from '../../assests/images/avatar.png'
 import Input from '../UI/Input/Input'
-
+import Button from '../UI/Button/Button'
 import axios from '../../axios'
+import imgsrc from '../../assests/images/bg4.jpg'
 class empCard extends Component{
     state={
          
@@ -15,9 +16,10 @@ class empCard extends Component{
             name: {
                 label:"Name",
                 elementType: 'input',
+                    style: 'Bold',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'name',
+                    placeholder: 'name'
                 
                 },
                 value:this.props.emp["name"],
@@ -28,33 +30,13 @@ class empCard extends Component{
                 touched: false,
                 editable: true
                
-            },
-            age: {
-                label:"Age",
-             
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'age'
-                },
-                value:this.props.emp["age"],
-                validation: {
-                    required:true,
-                    
-                },
-                valid:false,
-                touched: false,
-                editable: true
-               
-                 
-            },
-            title: {
+            }, title: {
                 label:"Title",
-               
+                
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'title'
+                    placeholder: 'title' 
                 },
                 value:this.props.emp["title"],
                 validation: {
@@ -67,9 +49,29 @@ class empCard extends Component{
              
                  
             },
+            age: {
+                label:"Age",
+               
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'age' 
+                },
+                value:this.props.emp["age"],
+                validation: {
+                    required:true,
+                    
+                },
+                valid:false,
+                touched: false,
+                editable: true
+               
+                 
+            },
+           
             id: {
                 label:"ID",
-          
+             
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
@@ -153,20 +155,7 @@ class empCard extends Component{
             formData[formElementIdentifier] = this.state.inputForm[formElementIdentifier].value;
         }
     }
-    submitHandler=(event) => {
-      event.preventDefault();
-         
-        const formData = {};
-        for (let formElementIdentifier in this.state.inputForm) {
-            formData[formElementIdentifier] = this.state.inputForm[formElementIdentifier].value;
-        }
-        const order = {
-           
-            orderData: formData
-        }
-        console.log(order)
-
-    }
+ 
     inputChangedHandler =(event, inputIdentifier) => {
         
         const updatedloginForm = {
@@ -207,6 +196,7 @@ class empCard extends Component{
                 <Input 
                   label={formElement.config.label}
                 key={formElement.id}
+                style={formElement.config.label}
                 elementType={formElement.config.elementType}
                 elementConfig={formElement.config.elementConfig}
                 value={formElement.config.value}
@@ -223,15 +213,15 @@ class empCard extends Component{
       );
  
     return(
-        
-        <div className={classes.Container}>
-            <div className={[classes.Image, classes.Trick].join(' ')}></div>
+        <Auxiliary>
+         <div className={classes.Container}>
+            <div className={classes.Image}/>
             <div className={classes.EmpCard}>
                {form}
-          <button className={classes.Button} onClick={this.editableHandler} >{this.state.editable? "Save": "Edit"}</button>
-
+          <Button  btnType={"Sixth"} clicked={this.editableHandler} >{this.state.editable? "Save": "Edit"}</Button>
             </div>
         </div>
+        </Auxiliary>
     )
 
 
