@@ -3,63 +3,23 @@
 body{
 	background-color: #262a2b;
  
-}
-.Container{
-     
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    
-    transform: translate(-50%, -50%)  ;
-    overflow: hidden;
- 
-    /*card wala eh??*/
- width: 35%;
-	max-width: 75%;
-	min-height: 480px; 
-  border-radius: 10px; 
-  box-shadow: 0px 1px 10px 1px black;
-
-
-  
-}
-
-
-
+} 
 .AddEmp{
  
   display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
+ 
 
 	justify-content:center;
   
-    align-items: center;    padding-top: 30px;
+    align-items: center;    
     
     
 }
-
-.Container:before {
-	content: '';
-	position: absolute;
-	top: -22px;
-	left: -22px;
-	right: -22px;
-	bottom: -22px;
-	z-index: -1;
-	background: #fff; 
-	transform: skew(2deg, 2deg);
  
-}
-.Container:first-child:before {
-  background: #C9FFBF;
-  background: -webkit-linear-gradient(to right, #991100, #42c000);
-  background: linear-gradient(to right, #991100, #42c000);
-  
-
-}
+ 
  .AddEmp input{
     font-style: italic;
 
- }
+ } 
+ 

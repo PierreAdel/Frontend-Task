@@ -7,7 +7,7 @@ const input =(props) => {
 
     let inputElement=null
     let errorElement =null
-    const inputClasses = [classes.InputElement]
+    const inputClasses = [classes.InputElement, classes.Bold]
 
     if(props.invalid && props.shouldValidate && props.touched){
         inputClasses.push(classes.Invalid)
@@ -17,23 +17,9 @@ const input =(props) => {
     {
         inputClasses.push(classes.Disabled)
     }
-    if(props.style === "Name")
-    {
-        inputClasses.push(classes.Bold)
-    }
-    else if(props.style === "Age")
-    {
-        inputClasses.push(classes.Age)
-    }
-    else if(props.style === "Title")
-    {
-        inputClasses.push(classes.Title)
-    }
-    else if(props.style === "ID")
-    {
-        inputClasses.push(classes.ID)
-    }
     
+   
+ 
     switch(props.elementType)
     {
         case ('input'):

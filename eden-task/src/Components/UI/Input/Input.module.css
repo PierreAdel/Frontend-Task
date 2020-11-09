@@ -1,37 +1,3 @@
-
- @media (min-width: 300px) and (min-height: 400px) {
-    .Container {
-      width: 80%;
-      height: 80%;
-     
-    }
-    .Image{
-      width: 50px;
-      height: 50px;
-    }
-  }
-  @media (min-width: 768px) and (min-height: 401px) {
-    .Container {
-      width: 20%;
-      height: 50%;
-    }
-    .Image{
-      width: 75px;
-      height: 75px;
-    }
-  }
-  @media (min-width: 1000px) and (min-height: 700px) {
-    .Container {
-      width: 35%;
-      height: 70%;
-    }
-    .Image{
-      width: 100px;
-      height: 100px;
-    }
-  }
-
-
 .Input {
     width: 60%;
     margin: 30px;
@@ -39,8 +5,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-
+    align-items: center;
+    min-width: 500px;
 }
 
 .Label{
@@ -53,9 +19,8 @@
     text-align: center;
     padding-top: 30px;
     padding-bottom: -30px;
-     
+
  
-        min-width:  500px; 
 
 }
 .InputElement {
@@ -71,42 +36,24 @@ letter-spacing: 1.5px;
 /*     border-bottom:  solid 1px rgba(0,0,0,.1);  */
     border-radius: 20px;
     background:  rgb(230, 230, 230); 
-    min-width:  500px; 
+    width: 50%;
+    max-width:  65%; 
+ 
     box-sizing:  border-box; 
     transition:  all .3s linear; 
     color:  #000; 
    
     -webkit-appearance:  none;   text-align: center;
+    align-items: center;
+    align-content: center;
     
-
 }
 .Bold{
     color: black;
     letter-spacing: 3px;
     font-weight: bold;
-    font-size:  24px; 
-
+    font-size:  20px; 
 }
-.Age{
-    color: black;
-    font-weight: bold;
- 
-}
-
-.Title{
-    color: black;
-    letter-spacing: 2px;
-    font-weight: bold;
-    font-size:  18px; 
-}
-
-.ID{
-    color: black;
-    letter-spacing: 3px;
-    font-weight: bold;
-}
-
-
  
 .InputElement:focus {
     outline: none;
@@ -116,21 +63,40 @@ letter-spacing: 1.5px;
 }
 
 .Invalid {
-     
     background-color: salmon;
-    
 }
 .Disabled {
-     
     background-color: transparent;
-    
 }
 .Input span{
-    
-    color: salmon;
-   
-     margin-right: 30px;
-  
+    color: salmon; 
+    margin-right: 30px;
  }
   
 
+
+ 
+
+@media screen and (max-width: 991px) {
+  /* start of large tablet styles */
+   
+  }
+  
+  @media screen and (max-width: 767px) {
+  /* start of medium tablet styles */
+  .Bold{
+   
+    font-size:  18px; 
+}
+
+  }
+  
+  @media screen and (max-width: 479px) {
+  /* start of phone styles */
+  .Bold{
+    letter-spacing: 2px;
+    font-size:  16px; 
+}
+
+  }
+ 

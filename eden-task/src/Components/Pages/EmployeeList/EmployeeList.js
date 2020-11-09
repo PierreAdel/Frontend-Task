@@ -31,23 +31,24 @@ class EmployeeList extends Component  {
  
         this.props.history.push( '/employee/' + id );
     }
-    moreClickHandler = (event) => {
+    PageClickHandler = (event,previous) => {
       event.preventDefault()
-      if(this.state.page === 1)
-   {   this.setState({page:2})
-      axios.get('/employees?page='+2)
-      .then( response => {
-        this.setState({data: response.data})})
-        .catch( error => {console.log(error)})
-       }
-       else
-       {
-        this.setState({page:1})
-        axios.get('/employees?page='+1)
+    
+      let statePage = {...this.state}
+      if(previous  && (this.state.page > 1))
+        statePage.page = statePage.page -1
+
+      else if(!previous && Object.keys(this.state.data).length >= 10 )
+        statePage.page = statePage.page +1
+
+      this.setState({page:statePage.page}, () => {
+        
+        axios.get('/employees?page='+this.state.page)
         .then( response => {
           this.setState({data: response.data})})
           .catch( error => {console.log(error)})
-       }
+      })
+     
      
     }
 
@@ -72,8 +73,6 @@ ToggleViewHandler=(event ) => {
       if(this.state.fullView)
       {
         emp = (
-          <Auxiliary>
-            
           <ul  >
               {this.state.data.map(employee=>{
                   return(
@@ -85,31 +84,26 @@ ToggleViewHandler=(event ) => {
                 
                 </li>
                   )
-  
-  
               } )}
           </ul>
      
-          </Auxiliary>
         )
       }
       else{
         emp = (
-          <Auxiliary>
-            
           <ul  >
               {this.state.data.map(employee=>{
                   return(
-                 <li key={employee.id} onClick={() => this.postSelectedHandler(employee.id)}><b>{employee.name}</b>: {employee.title}</li>  
+                  
+                   
+                 <li key={employee.id} onClick={() => this.postSelectedHandler(employee.id)}> <span>{employee.id}</span><b>{employee.name}</b>: {employee.title}</li>  
+                 
                   )
               } )}
           </ul>
-       
-          </Auxiliary>
         )
-        
       }
-      
+ 
     }
     if(this.state.loading)
     {
@@ -117,17 +111,22 @@ ToggleViewHandler=(event ) => {
 
     }
     return ( 
+    <Auxiliary>
     <div className={this.state.fullView? classes.EmployessList: classes.EmployeesListView}>
+         
     {emp}
-    <Button btnType={"Sixth2"} clicked={this.moreClickHandler}>Load Other</Button>
-    <Button   btnType={"Sixth2"} clicked={this.ToggleViewHandler}>Change View</Button>
-    <div onClick={this.addEmpHandler} className={classes.AddSticky}>Add A New Employee</div>
+    <Button btnType={"Sixth2"} clicked={(event) => this.PageClickHandler(event,true)}>Load Previous Page</Button>
+    <Button btnType={"Sixth2"} clicked={(event) => this.PageClickHandler(event,false)}>Load Next Page</Button>
+    <Button btnType={"Sixth2"} clicked={this.ToggleViewHandler}>Switch View</Button>
 
     <Modal show={this.state.creating} modalClosed={this.cancelEmpHandler} >
         <AddEmp/>
     </Modal>
     
     </div>
+    <div onClick={this.addEmpHandler} className={classes.AddSticky}>Add A New Employee</div>
+
+    </Auxiliary>
     )
   }
 

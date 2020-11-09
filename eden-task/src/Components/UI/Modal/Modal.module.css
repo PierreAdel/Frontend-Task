@@ -2,19 +2,42 @@
     position: fixed;
     z-index: 500;
     background-color: white;
-    width: 70%;
+    width: 50%;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
-    left: 15%;
-    top: 30%;
+    left: 25%;
+    top: 20%;
     box-sizing: border-box;
-    transition: all 0.3s ease-out;
+    transition: all 0.4s ease-out;
+    border-radius: 20px;
 }
 
-@media (min-width: 600px) {
+@media screen and (max-width: 991px) {
+    /* start of large tablet styles */
     .Modal {
-        width: 500px;
-        left: calc(50% - 250px);
+      width: 60%;
+      height: 60%;
+   
+     
     }
-}
+     
+    }
+    
+    @media screen and (max-width: 767px) {
+    /* start of medium tablet styles */
+    .Modal {
+      width: 70%;
+      height: 50%;
+    }
+   
+    }
+    
+    @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    .Modal {
+      width: 85%;
+      height: 70%;
+    }
+    
+    }

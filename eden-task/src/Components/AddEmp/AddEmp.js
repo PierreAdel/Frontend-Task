@@ -6,6 +6,9 @@ import avatar from '../../assests/images/avatar.png'
 import Input from '../UI/Input/Input'
 import Button from '../UI/Button/Button'
 import axios from '../../axios'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class AddEmp extends Component{
     state={
          
@@ -22,13 +25,12 @@ class AddEmp extends Component{
                 },
                 value:"",
                 validation: {
+                    minLength:1,
                     required:true 
                 },
                 valid:false,
                 touched: false,
-               
-                
-               
+ 
             },
             age: {
                 label:"Age",
@@ -76,6 +78,15 @@ class AddEmp extends Component{
  
     
     }
+    notify = () => toast.success('Data Saved Successfully', {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     editableHandler=(event)=>
     {
         event.preventDefault();
@@ -92,7 +103,7 @@ class AddEmp extends Component{
               .catch( error => {console.log(error)})
 
                 
-                alert("User data Saved")
+                this.notify()
        
 
     }
@@ -185,15 +196,17 @@ class AddEmp extends Component{
       );
  
     return(
-        
-        <div className={classes.Container}>
+        <Auxiliary>
+       
             
             <div className={classes.AddEmp}>
                {form}
-              <Button btnType={"Sixth"} clicked={this.editableHandler} >SAVE</Button>
+              <Button disabled={!this.state.loginFormIsValid} btnType={"Sixth"} clicked={this.editableHandler} >SAVE</Button>
 
             </div>
-        </div>
+     
+        <ToastContainer />
+        </Auxiliary>
     )
 
 

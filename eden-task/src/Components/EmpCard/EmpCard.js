@@ -7,7 +7,11 @@ import Input from '../UI/Input/Input'
 import Button from '../UI/Button/Button'
 import axios from '../../axios'
 import imgsrc from '../../assests/images/bg4.jpg'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class empCard extends Component{
+    
     state={
          
 
@@ -96,6 +100,15 @@ class empCard extends Component{
         
     
     }
+    notify = () => toast.success('Data Edited Successfully', {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     editableHandler=(event)=>
     {
         event.preventDefault();
@@ -112,7 +125,8 @@ class empCard extends Component{
               .catch( error => {console.log(error)})
 
                 this.setState({editable:false})
-                alert("User data updated")
+                this.notify()
+                 
         }
         else
         {
@@ -220,7 +234,9 @@ class empCard extends Component{
                {form}
           <Button  btnType={"Sixth"} clicked={this.editableHandler} >{this.state.editable? "Save": "Edit"}</Button>
             </div>
+         
         </div>
+        <ToastContainer />
         </Auxiliary>
     )
 
